@@ -15,10 +15,9 @@ else
    else
    echo "Any of the Pods are not running,Kindly revert the cahnges"
    ##git log --oneline --graph
-   git revert -n $commit_id
-   git commit -m "
+   git revert -m 1 $commit_id
    git push --set-upstream origin $working_branch
-   git request-pull $commit_id $git_url $main_branch
+   gh pr create --title "PR has been created at $date as per previous Prod Running Sucessfully" --body "Reverted to previous woking state" --base $main_branch --head working_branch
    fi
    
 fi
